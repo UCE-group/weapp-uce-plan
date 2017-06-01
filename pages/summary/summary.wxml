@@ -1,0 +1,35 @@
+<view class="summary">
+  <view class="summary-hd">
+    <image class="summary-logo" src="../../images/UCE.jpg"></image>
+    <view class="summary-desc">分享学习计划，交流学习心得！</view>
+  </view>
+
+  <view class="summary-bd">
+    <view class="kind-list">
+
+      <block wx:for="{{issuesTitle}}" wx:for-item="title" wx:key="*item">
+        <view class="kind-list-item">
+
+          <view id="{{title.name}}" data-list="{{issuesTitle}}" class="kind-list-item-hd {{title.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{title.name}}</view>
+            <image class="kind-list-img" src="{{title.avatar}}"></image>
+          </view>
+
+          <view class="kind-list-item-bd {{title.open ? 'kind-list-item-bd-show' : ''}}">
+            <view class="navigator-box {{title.open ? 'navigator-box-show' : ''}}">
+              <block wx:for="{{issuesWeek}}" wx:for-item="week" wx:key="*item">
+
+                <view id="{{week.num}}" wx:if="{{week.key==title.name}}" bindtap="showContent" class="navigator">
+                  <view class="navigator-text">{{week.value}}</view>
+                  <view class="navigator-arrow"></view>
+                </view>
+
+              </block>
+            </view>
+          </view>
+
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
