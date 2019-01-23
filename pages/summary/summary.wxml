@@ -7,20 +7,20 @@
   <view class="summary-bd">
     <view class="kind-list">
 
-      <block wx:for="{{issuesTitle}}" wx:for-item="title" wx:key="*item">
+      <block wx:for="{{names}}" wx:for-item="iname" wx:key="*item">
         <view class="kind-list-item">
 
-          <view id="{{title.name}}" data-list="{{issuesTitle}}" class="kind-list-item-hd {{title.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
-            <view class="kind-list-text">{{title.name}}</view>
-            <image class="kind-list-img" src="{{title.avatar}}"></image>
+          <view id="{{iname.name}}" data-list="{{names}}" class="kind-list-item-hd {{iname.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{iname.name}}{{iname.time}}</view>
+            <image class="kind-list-img" src="{{iname.avatar}}"></image>
           </view>
 
-          <view class="kind-list-item-bd {{title.open ? 'kind-list-item-bd-show' : ''}}">
-            <view class="navigator-box {{title.open ? 'navigator-box-show' : ''}}">
-              <block wx:for="{{issuesWeek}}" wx:for-item="week" wx:key="*item">
+          <view class="kind-list-item-bd {{iname.open ? 'kind-list-item-bd-show' : ''}}">
+            <view class="navigator-box {{iname.open ? 'navigator-box-show' : ''}}">
+              <block wx:for="{{titles}}" wx:for-item="ititle" wx:key="*item">
 
-                <view id="{{week.num}}" wx:if="{{week.key==title.name}}" bindtap="showContent" class="navigator">
-                  <view class="navigator-text">{{week.value}}</view>
+                <view id="{{ititle.num}}" data-name="{{iname.name}}" data-time="{{ititle.time}}" wx:if="{{ititle.name == iname.name}}" bindtap="showContent" class="navigator">
+                  <view class="navigator-text">{{ititle.title}}</view>
                   <view class="navigator-arrow"></view>
                 </view>
 
@@ -30,6 +30,7 @@
 
         </view>
       </block>
+
     </view>
   </view>
 </view>

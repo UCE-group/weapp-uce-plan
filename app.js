@@ -1,4 +1,4 @@
-// const access_token = require('./config').access_token
+const access_token = require('./config').access_token
 
 App({
 
@@ -8,7 +8,7 @@ App({
       url: url,
       data: {
         // 配置access_token，以突破api的访问次数限制
-        // access_token: access_token
+        access_token: access_token
       },
       header: {
         'content-type': 'application/json'

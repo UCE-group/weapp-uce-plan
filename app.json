@@ -1,12 +1,13 @@
 {
-  "pages":[
+  "pages": [
     "pages/summary/summary",
-    "pages/articles/article"
+    "pages/articles/article",
+    "pages/plan_list/plans"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "UCE学习计划",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }
