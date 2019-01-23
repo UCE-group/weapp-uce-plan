@@ -1,0 +1,27 @@
+<view class="summary">
+  <view class="summary-bd">
+    <view class="kind-list">
+        <view class="kind-list-item">
+
+          <view id="{{name}}" class="kind-list-item-hd" >
+            <view class="kind-list-text">{{name}}{{time}}</view>
+            <image class="kind-list-img" src="{{avatar}}"></image>
+          </view>
+
+          <view class="kind-list-item-bd kind-list-item-bd-show">
+            <view class="navigator-box navigator-box-show">
+              <block wx:for="{{plans}}" wx:for-item="plan" wx:key="*item">
+
+                <view id="{{plan.num}}" data-time="{{plan.time}}" wx:if="{{plan.name==name}}" bindtap="showContent" class="navigator">
+                  <view class="navigator-text">{{plan.title}}</view>
+                  <view class="navigator-arrow"></view>
+                </view>
+
+              </block>
+            </view>
+          </view>
+
+        </view>
+    </view>
+  </view>
+</view>

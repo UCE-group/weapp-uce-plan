@@ -3,7 +3,7 @@
   text-align: center;
 }
 .summary-bd {
-  padding: 0 30rpx 40rpx;
+  padding: 30rpx;
 }
 
 .summary-logo {

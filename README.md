@@ -4,6 +4,11 @@
 * 按作者姓名对学习计划归类并以列表显示
 * 对Markdown文章进行了简单的解析
 
-## 页面效果预览
+## V0.1.1 更新记录
+* 去除了字符串解析的一些多余操作
+* 删除了不必要的客户端缓存
+* 添加了个人FP列表页面，避免主页面过长
 
-![](https://github.com/UCE-group/weapp-uce-plan/blob/master/images/weapp-uce-plan.gif)
+## 微信扫码使用
+
+![](https://github.com/UCE-group/fortnightly-plan/blob/master/小程序码.jpg)
