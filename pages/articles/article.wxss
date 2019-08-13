@@ -1,4 +1,5 @@
-@import "../../wxParse/wxParse.wxss";
+/**基础风格样式**/
+@import '/towxml/style/main.wxss';
 
 .main{
   margin: 20rpx;
