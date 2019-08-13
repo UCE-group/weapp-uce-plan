@@ -1,24 +1,7 @@
-const access_token = require('./config').access_token
+const Towxml = require('./towxml/main') // 引入Towxml库
 
 App({
-
-  getIssuesInfo: function (url, func) {
-    var globalData = this.globalData;
-    wx.request({
-      url: url,
-      data: {
-        // 配置access_token，以突破api的访问次数限制
-        access_token: access_token
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        func(res.data);
-      }
-    });
-  },
-
+  towxml: new Towxml(), // 创建towxml对象
   globalData: {
     plans: null
   }

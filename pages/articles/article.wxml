@@ -1,4 +1,4 @@
-<import src="../../wxParse/wxParse.wxml" />
+<import src="../../towxml/entry.wxml"/>
 <view class="main">
-  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  <template is="entry" data="{{...article}}"/>
 </view>

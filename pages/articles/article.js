@@ -1,16 +1,16 @@
 const git_url = require('../../config').git_url;
-var WxParse = require('../../wxParse/wxParse.js');
+const access_token = require('../../config').access_token;
 var app = getApp();
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     num: 34,
     name: null,
-    time: null
+    time: null,
+    article: {} //article将用来存储towxml数据
   },
 
   /**
@@ -20,27 +20,38 @@ Page({
     this.setData({ num: options.num, name: options.name, time: options.time });
     // 启动导航条加载动画
     wx.showNavigationBarLoading();
+    wx.setNavigationBarTitle({
+      title: '加载中...',
+    })
     this.getIssuesContent();
   },
 
   getIssuesContent: function () {
     var that = this;
     var url = git_url + '/' + this.data.num;
-    app.getIssuesInfo(url, function (data) {
-      var article = data.body;
-      WxParse.wxParse('article', 'md', article, that, 10);
-      // console.log(article);
-      wx.hideNavigationBarLoading();
+
+    wx.request({
+      url: url,
+      data: {
+        // 配置access_token，以突破api的访问次数限制
+        access_token: access_token
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        var md = res.data.body;
+        //将markdown内容转换为towxml数据
+        var mddata = app.towxml.toJson(
+          md,             // `markdown`或`html`文本内容
+          'markdown'      // `markdown`或`html`
+        );
+        that.setData({ article: mddata });
+        wx.hideNavigationBarLoading();
+        wx.setNavigationBarTitle({
+          title: that.data.name + that.data.time,
+        });
+      }
     });
-    wx.setNavigationBarTitle({
-      title: that.data.name + that.data.time,
-    })
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
   }
 })
